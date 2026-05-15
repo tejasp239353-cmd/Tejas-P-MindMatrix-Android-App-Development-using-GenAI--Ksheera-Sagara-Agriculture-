@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-farm-bg: #F8F9FA;
+  --color-farm-text: #1A1A1A;
+  --color-farm-muted: #64748B;
+  --color-farm-green: #059669;
+  --color-farm-indigo: #4F46E5;
+}
+
+@layer base {
+  body {
+    @apply bg-farm-bg text-farm-text antialiased;
+  }
+}
+
+.minimal-card {
+  @apply bg-white rounded-[32px] border border-slate-100 shadow-sm transition-all hover:shadow-md;
+}
+
+.dark-card {
+  @apply bg-[#141414] text-white rounded-[32px] shadow-xl p-8;
+}
+
+.btn-minimal {
+  @apply px-6 py-3 rounded-full font-bold transition-all active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2;
+}
+
+.label-caps {
+  @apply text-xs font-bold text-slate-400 uppercase tracking-[0.14em];
+}
+
+.input-minimal {
+  @apply w-full px-5 py-4 rounded-3xl bg-slate-50 border border-slate-100 focus:bg-white focus:ring-2 focus:ring-farm-indigo focus:border-transparent outline-none transition-all;
+}

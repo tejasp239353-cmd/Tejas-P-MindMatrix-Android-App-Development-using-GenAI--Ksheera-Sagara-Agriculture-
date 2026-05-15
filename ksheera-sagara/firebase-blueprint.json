@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "Cow": {
+      "title": "Cow",
+      "description": "Information about an individual cow",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tagNumber": { "type": "string" },
+        "breed": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "userId"]
+    },
+    "MilkSlip": {
+      "title": "Milk Slip",
+      "description": "Daily milk income record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "cowId": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "liters": { "type": "number" },
+        "fat": { "type": "number" },
+        "snf": { "type": "number" },
+        "rate": { "type": "number" },
+        "amount": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["date", "liters", "amount", "userId"]
+    },
+    "Expense": {
+      "title": "Expense",
+      "description": "Daily expense record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "cowId": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "category": { "type": "string", "enum": ["Fodder", "Medical", "Labor", "Electricity", "Other"] },
+        "amount": { "type": "number" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["date", "category", "amount", "userId"]
+    }
+  },
+  "firestore": {
+    "/cows/{cowId}": { "schema": "Cow", "description": "User's cows" },
+    "/milkSlips/{slipId}": { "schema": "MilkSlip", "description": "Daily income logs" },
+    "/expenses/{expenseId}": { "schema": "Expense", "description": "Daily expense logs" }
+  }
+}
